@@ -14,6 +14,7 @@ class ConversationSummary(BaseModel):
 class ChatRequest(BaseModel):
     conversation_id: int
     message: str
+    model: str | None = None
 
 
 class ChatResponse(BaseModel):
@@ -22,6 +23,22 @@ class ChatResponse(BaseModel):
 
 
 class MessageResponse(BaseModel):
+    seq: int
+    role: str
+    content: str
+    created_at: datetime
+
+
+class ModelsResponse(BaseModel):
+    models: list[str]
+
+
+class NoteCreate(BaseModel):
+    conversation_id: int | None = None
+    content: str
+
+
+class NoteResponse(BaseModel):
     seq: int
     role: str
     content: str
